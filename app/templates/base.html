@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or 'Carlos Zerpa | Desarrollador' }}</title>
+  <meta name="description" content="Portfolio y servicios de desarrollo de software por Carlos Zerpa.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="noise-bg"></div>
+  <header class="site-header">
+    <a class="brand" href="/">CarlosZerpa | Desarrollador</a>
+    <nav class="nav">
+      <a href="/proyectos">Proyectos</a>
+      <a href="/servicios">Servicios</a>
+      <a href="/contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <p>© {{ 2025 }} Carlos Zerpa | carlosalfredozerpa@gmail.com </p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>

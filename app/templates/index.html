@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <h1 class="glitch" data-text="Software Eficiente Resultados Reales">Software Eficiente<br>Resultados Reales</h1>
+  
+  <div class="hero-avatar">
+    <img src="{{ url_for('static', filename='img/profile.jpeg') }}?v=1" alt="Foto de Carlos Zerpa" loading="eager" onerror="this.onerror=null;this.src='https://i.ibb.co/xSZCFtx/profile-jpg.jpg';">
+  </div>
+  
+  <p class="lead">Hola, soy <strong>Carlos Zerpa</strong>, desarrollador Full‑Stack.</p>
+  <p class="sublead">Transformo ideas complejas en soluciones tecnológicas rápidas, escalables y visualmente atractivas. Trabajo con React Native, JavaScript (JS) y Python, con foco en calidad de código y una UX excelente.</p>
+  <p class="availability">¿Tienes un proyecto en mente? Estoy disponible para nuevas colaboraciones y retos desde ahora.</p>
+
+  <div class="cta">
+    <a class="btn-primary" href="/proyectos">Ver proyectos</a>
+    <a class="btn-secondary" href="/servicios">Servicios</a>
+    <a class="btn-primary" href="/contacto">Contratar ahora</a>
+  </div>
+</section>
+
+<section class="grid-features">
+  <article>
+    <h3>Calidad</h3>
+    <p>Código claro, mantenible y orientado a resultados. — Carloszerpav</p>
+  </article>
+  <article>
+    <h3>Velocidad</h3>
+    <p>Entrega ágil y comunicación directa.</p>
+  </article>
+  <article>
+    <h3>Escalabilidad</h3>
+    <p>Arquitecturas pensadas para crecer sin dolor.</p>
+  </article>
+</section>
+{% endblock %}
