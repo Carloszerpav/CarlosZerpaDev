@@ -84,6 +84,17 @@ def malva_shop_file(filename: str):
     return send_from_directory(MALVA_DIR, filename)
 
 
+@bp.get("/proyectos/servicios-adobe")
+def adobe_services():
+    return render_template(
+        "project_info.html",
+        title="Servicios Adobe | Carlos Zerpa",
+        heading="Servicios Adobe",
+        desc="Ofrezco automatizaciones, configuraciones y training de innovación sobre Adobe, con experiencia técnica en el rubro: PDF Services, Firefly Services y flujos de trabajo documentales y creativos. El enfoque es práctico, de implementación y de adopción en equipos reales.",
+        show_contact=True,
+    )
+
+
 @bp.get("/proyectos/app-trader")
 def app_trader():
     return render_template(

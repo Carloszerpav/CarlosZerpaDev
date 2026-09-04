@@ -3,6 +3,11 @@
 <section>
   <h2>{{ heading }}</h2>
   <p>{{ desc }}</p>
+  {% if show_contact %}
+  <p style="margin-top: 24px;">
+    <a class="btn-primary" href="{{ url_for('main.contact') }}">Hablar de Adobe</a>
+  </p>
+  {% endif %}
   <p style="margin-top: 24px;">
     <a class="card-link" href="{{ url_for('main.projects') }}">← Volver a proyectos</a>
   </p>
