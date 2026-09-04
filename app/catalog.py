@@ -15,36 +15,55 @@ def adobe_service_buttons() -> list[dict]:
     options = [
         (
             "Integraciones",
+            "link",
+            "Conecta Adobe con tus herramientas y sistemas.",
             "Hola, me interesa el servicio de Integraciones Adobe. Cuentan con experiencia en preventa y postventa, y quiero coordinar una conversación.",
         ),
         (
             "Webinars e inducciones",
+            "webinar",
+            "Sesiones en vivo para capacitar a tu equipo.",
             "Hola, me interesa un Webinar o inducción de Adobe. Quiero conocer cómo lo abordan en preventa y postventa.",
         ),
         (
             "Training a usuarios",
+            "users",
+            "Capacitación práctica según cada rol.",
             "Hola, necesito training para usuarios de tecnologías Adobe. Me gustaría agendar una sesión.",
         ),
         (
             "Automatizaciones",
+            "bolt",
+            "Flujos para reducir trabajo manual.",
             "Hola, me interesa automatizar flujos con Adobe. Quiero revisar alcance, preventa y acompañamiento postventa.",
         ),
         (
             "PDF Services",
+            "pdf",
+            "Soluciones PDF seguras y escalables.",
             "Hola, quiero información sobre Adobe PDF Services. Necesito apoyo técnico de preventa y postventa.",
         ),
         (
             "Firefly Services",
+            "spark",
+            "IA creativa con Adobe Firefly.",
             "Hola, me interesa Adobe Firefly Services. Quiero ver casos de uso y cómo pueden acompañarnos en preventa y postventa.",
         ),
         (
             "Soporte consola",
+            "support",
+            "Acompañamiento para admins y usuarios.",
             "Hola, necesito soporte para usuarios y administradores de la consola Adobe. ¿Podemos coordinar una llamada?",
         ),
     ]
     return [
-        {"label": label, "url": _whatsapp_url(message)}
-        for label, message in options
+        {
+            "label": label,
+            "icon": icon,
+            "hint": hint,
+            "url": _whatsapp_url(message),
+        }
+        for label, icon, hint, message in options
     ]
 
 
