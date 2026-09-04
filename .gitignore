@@ -45,6 +45,7 @@ logs/
 *.sqlite
 *.sqlite3
 
-# Railway / Deployment
+# Railway / Vercel / Deployment
 .railway/
+.vercel/
 

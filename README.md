@@ -33,6 +33,27 @@ python run.py
 
 La aplicación estará disponible en: http://127.0.0.1:5000
 
+## Despliegue en Vercel
+
+1. En [vercel.com/new](https://vercel.com/new) importa el repo `Carloszerpav/CarlosZerpaDev`.
+2. Usa estos valores en el dashboard (el repo ya incluye `vercel.json`, `wsgi.py` y `pyproject.toml`):
+
+| Campo | Valor |
+|---|---|
+| Framework Preset | Other / Flask (si aparece) |
+| Root Directory | `.` |
+| Build Command | vacío |
+| Output Directory | vacío |
+| Install Command | `pip install -r requirements.txt` |
+| Production Branch | `main` |
+
+3. En **Settings → General**, deja Python **3.12** (archivo `.python-version`). Railway sigue usando 3.11 vía `runtime.txt`.
+4. Variables de entorno (Production y Preview):
+   - `FLASK_ENV=production`
+   - WhatsApp si las usas (ver sección WhatsApp)
+
+Vercel no usa el `Procfile` ni Gunicorn: corre Flask como una función serverless a través de `wsgi.py`.
+
 ## Despliegue en Railway
 
 ### Pasos para desplegar:
@@ -89,9 +110,13 @@ CarlosZerpaDev/
 │   │   └── img/
 │   ├── __init__.py        # Factory de Flask
 │   └── routes.py          # Rutas de la aplicación
-├── run.py                 # Punto de entrada
+├── run.py                 # Punto de entrada local / Railway
+├── wsgi.py                # Punto de entrada WSGI para Vercel
+├── vercel.json            # Configuración de funciones Vercel
+├── pyproject.toml         # Entrypoint Vercel (wsgi:app)
+├── .python-version        # Python 3.12 en Vercel
 ├── Procfile              # Comando para Railway
-├── runtime.txt           # Versión de Python
+├── runtime.txt           # Versión de Python en Railway
 └── requirements.txt      # Dependencias
 ```
 
