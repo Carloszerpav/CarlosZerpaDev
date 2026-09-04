@@ -1,37 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<section class="adobe-page">
-  <div class="adobe-intro">
-    <img class="adobe-brand-logo" src="{{ url_for('static', filename='img/adobe-logo.png') }}" alt="Adobe">
-    <h2>Servicios <span>Adobe</span></h2>
-    <p>Ofrezco automatizaciones, configuraciones y training de innovación sobre Adobe, con experiencia técnica en el rubro: PDF Services, Firefly Services y flujos de trabajo documentales y creativos. El enfoque es práctico, de implementación y de adopción en equipos reales.</p>
-    <p>Contamos con experiencia en servicios Adobe de preventa y postventa: entendemos el alcance, acompañamos la implementación y damos continuidad a usuarios y administradores.</p>
-    <p class="adobe-wa-hint">Te abrimos WhatsApp con un mensaje listo para enviar.</p>
-  </div>
-
-  <div class="adobe-hero" aria-hidden="true">
-    <img class="adobe-fan adobe-fan-1" src="{{ url_for('static', filename='img/adobe-ps.png') }}" alt="">
-    <img class="adobe-fan adobe-fan-2" src="{{ url_for('static', filename='img/adobe-ai.png') }}" alt="">
-    <img class="adobe-fan adobe-fan-3" src="{{ url_for('static', filename='img/adobe-acr.png') }}" alt="">
-    <img class="adobe-fan adobe-fan-4" src="{{ url_for('static', filename='img/adobe-fire.png') }}" alt="">
-    <div class="adobe-pedestal"></div>
-    <img class="adobe-hero-logo" src="{{ url_for('static', filename='img/adobe-logo.png') }}" alt="">
-  </div>
-
-  <div class="adobe-list">
+<section>
+  <img class="adobe-brand-logo" src="{{ url_for('static', filename='img/adobe-logo.png') }}" alt="Adobe">
+  <h2>Servicios Adobe</h2>
+  <p>Ofrezco automatizaciones, configuraciones y training de innovación sobre Adobe, con experiencia técnica en el rubro: PDF Services, Firefly Services y flujos de trabajo documentales y creativos. El enfoque es práctico, de implementación y de adopción en equipos reales.</p>
+  <p>Contamos con experiencia en servicios Adobe de preventa y postventa: entendemos el alcance, acompañamos la implementación y damos continuidad a usuarios y administradores.</p>
+  <p style="color: var(--muted); margin: 28px 0 12px;">Elige el tipo de servicio. Te abrimos WhatsApp con un mensaje listo para enviar.</p>
+  <div class="cta" style="justify-content: flex-start;">
     {% for item in adobe_buttons %}
-    <a class="adobe-svc" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
-      <img src="{{ item.icon }}" alt="">
-      <span>
-        <strong>{{ item.label }}</strong>
-        <small>{{ item.blurb }}</small>
-      </span>
-      <i aria-hidden="true">→</i>
-    </a>
+    <a class="btn-secondary" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.label }}</a>
     {% endfor %}
   </div>
-
-  <p class="adobe-back">
+  <p style="margin-top: 28px;">
     <a class="card-link" href="{{ url_for('main.projects') }}">← Volver a proyectos</a>
   </p>
 </section>

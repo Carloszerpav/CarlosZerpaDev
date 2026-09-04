@@ -15,55 +15,36 @@ def adobe_service_buttons() -> list[dict]:
     options = [
         (
             "Integraciones",
-            "Conectamos Adobe con tus herramientas y sistemas para optimizar tus procesos.",
-            "img/adobe-ps.png",
             "Hola, me interesa el servicio de Integraciones Adobe. Cuentan con experiencia en preventa y postventa, y quiero coordinar una conversación.",
         ),
         (
             "Webinars e inducciones",
-            "Sesiones en vivo para capacitar equipos y asegurar una adopción efectiva.",
-            "img/adobe-ai.png",
             "Hola, me interesa un Webinar o inducción de Adobe. Quiero conocer cómo lo abordan en preventa y postventa.",
         ),
         (
             "Training a usuarios",
-            "Capacitaciones personalizadas según el rol y las necesidades de tu equipo.",
-            "img/adobe-ai.png",
             "Hola, necesito training para usuarios de tecnologías Adobe. Me gustaría agendar una sesión.",
         ),
         (
             "Automatizaciones",
-            "Diseñamos flujos y automatizaciones para ganar eficiencia y reducir tareas manuales.",
-            "img/adobe-ps.png",
             "Hola, me interesa automatizar flujos con Adobe. Quiero revisar alcance, preventa y acompañamiento postventa.",
         ),
         (
             "PDF Services",
-            "Implementación y soporte de soluciones PDF escalables, seguras y confiables.",
-            "img/adobe-acr.png",
             "Hola, quiero información sobre Adobe PDF Services. Necesito apoyo técnico de preventa y postventa.",
         ),
         (
             "Firefly Services",
-            "Integración y adopción de herramientas creativas con Adobe Firefly.",
-            "img/adobe-fire.png",
             "Hola, me interesa Adobe Firefly Services. Quiero ver casos de uso y cómo pueden acompañarnos en preventa y postventa.",
         ),
         (
             "Soporte consola",
-            "Acompañamiento y soporte continuo para administradores y usuarios.",
-            "img/adobe-logo.png",
             "Hola, necesito soporte para usuarios y administradores de la consola Adobe. ¿Podemos coordinar una llamada?",
         ),
     ]
     return [
-        {
-            "label": label,
-            "blurb": blurb,
-            "icon": url_for("static", filename=icon),
-            "url": _whatsapp_url(message),
-        }
-        for label, blurb, icon, message in options
+        {"label": label, "url": _whatsapp_url(message)}
+        for label, message in options
     ]
 
 
