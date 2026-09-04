@@ -7,6 +7,8 @@ import json
 import os
 
 _BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+from paths import MOUNT_PREFIX, prefixed
+
 app = Flask(
     __name__,
     root_path=_BASE_DIR,
@@ -46,7 +48,8 @@ if DATABASE_URL.startswith('postgres://'):
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SESSION_COOKIE_NAME'] = 'ventas_session'
-app.config['SESSION_COOKIE_PATH'] = '/proyectos/sistema-ventas'
+app.config['SESSION_COOKIE_PATH'] = MOUNT_PREFIX
+app.config['APPLICATION_ROOT'] = MOUNT_PREFIX
 
 # Inicializar SQLAlchemy
 db = SQLAlchemy(app)
@@ -57,6 +60,11 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 login_manager.login_message = 'Por favor inicia sesión para acceder a esta página.'
 login_manager.login_message_category = 'info'
+
+
+@app.context_processor
+def inject_ventas_urls():
+    return {"vurl": prefixed}
 
 # Configuración de OAuth con Google
 oauth = OAuth(app)
@@ -699,23 +707,23 @@ def agregar():
         # Validaciones
         if not cliente:
             print("❌ Error: Cliente vacío")
-            return redirect('/')
+            return redirect(prefixed('/'))
         
         # Validación obligatoria de rubros
         if not rubros:
             print("❌ Error: Debe seleccionar al menos un rubro")
-            return redirect('/')
+            return redirect(prefixed('/'))
         
         try:
             valor_total = float(valor_total) if valor_total else 0
             abono = float(abono) if abono else 0
         except ValueError as e:
             print(f"❌ Error al convertir valores numéricos: {e}")
-            return redirect('/')
+            return redirect(prefixed('/'))
         
         if valor_total < 0 or abono < 0:
             print("❌ Error: Valores negativos no permitidos")
-            return redirect('/')
+            return redirect(prefixed('/'))
         
         if not fecha:
             fecha = datetime.now().strftime("%Y-%m-%d")
@@ -723,11 +731,11 @@ def agregar():
         nueva_venta = agregar_venta(usuario_email, cliente, valor_total, abono, rubros, fecha)
         print(f"✅ Venta agregada: ID={nueva_venta['id']}, Cliente='{nueva_venta['cliente']}', Valor=${nueva_venta['valor_total']}, Rubros: {', '.join(rubros)}")
         
-        return redirect('/')
+        return redirect(prefixed('/'))
         
     except Exception as e:
         print(f"❌ Error inesperado en agregar venta: {e}")
-        return redirect('/')
+        return redirect(prefixed('/'))
 
 @app.route('/eliminar/<int:id>')
 @login_required
@@ -741,7 +749,7 @@ def eliminar(id):
     else:
         print(f"❌ Venta {id} no encontrada")
     
-    return redirect('/')
+    return redirect(prefixed('/'))
 
 @app.route('/api/estadisticas')
 @login_required
@@ -772,7 +780,7 @@ def gestionar_pago(venta_id):
     usuario_email = current_user.email
     venta = obtener_venta(usuario_email, venta_id)
     if not venta:
-        return redirect('/')
+        return redirect(prefixed('/'))
     
     if request.method == 'POST':
         try:
@@ -781,7 +789,7 @@ def gestionar_pago(venta_id):
             
             if monto_pago <= 0:
                 print("❌ Error: Monto de pago inválido")
-                return redirect(f'/pago/{venta_id}')
+                return redirect(prefixed(f'/pago/{venta_id}'))
             
             venta_actualizada = registrar_pago(usuario_email, venta_id, monto_pago, tipo_pago)
             if venta_actualizada:
@@ -796,7 +804,7 @@ def gestionar_pago(venta_id):
         except Exception as e:
             print(f"❌ Error inesperado: {e}")
         
-        return redirect('/')
+        return redirect(prefixed('/'))
     
     # GET: Mostrar formulario de pago
     return render_template('pago.html', venta=venta, formatear_moneda=formatear_moneda, formatear_fecha=formatear_fecha)
@@ -810,7 +818,7 @@ def ver_historial(venta_id):
     usuario_email = current_user.email
     venta = obtener_venta(usuario_email, venta_id)
     if not venta:
-        return redirect('/')
+        return redirect(prefixed('/'))
     
     return render_template('historial.html', venta=venta, formatear_moneda=formatear_moneda, formatear_fecha=formatear_fecha)
 
@@ -863,11 +871,11 @@ def cierre_mensual():
             resumen = cerrar_mes_estadisticas(usuario_email, mes, año)
             print(f"✅ Cierre mensual realizado: {resumen['ventas_excluidas']} ventas excluidas")
             
-            return redirect('/')
+            return redirect(prefixed('/'))
             
         except Exception as e:
             print(f"❌ Error en cierre mensual: {e}")
-            return redirect('/')
+            return redirect(prefixed('/'))
     
     # GET: Mostrar formulario de cierre mensual
     ventas_pendientes = obtener_ventas_cerradas_pendientes(usuario_email)
@@ -925,7 +933,7 @@ def estadisticas_periodo():
                                      rubros=RUBROS)
             else:
                 print("❌ Error al obtener estadísticas del período")
-                return redirect('/estadisticas-periodo')
+                return redirect(prefixed('/estadisticas-periodo'))
     
     # GET: Mostrar formulario de selección de período
     # Establecer fechas por defecto (último mes)

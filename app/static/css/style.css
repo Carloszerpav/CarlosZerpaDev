@@ -79,6 +79,7 @@ section > p { color: var(--muted); }
 .project-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
 .project-image { width: 100%; height: 200px; overflow: hidden; position: relative; background: linear-gradient(135deg, rgba(90,200,250,0.1), rgba(155,90,249,0.1)); }
 .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.project-image img.project-image-contain { object-fit: contain; background: #fff; padding: 18px; }
 .project-card:hover .project-image img { transform: scale(1.05); }
 .card-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .project-desc { color: var(--muted); line-height: 1.6; margin: 8px 0; }

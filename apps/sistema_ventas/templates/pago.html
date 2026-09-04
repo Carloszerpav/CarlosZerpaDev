@@ -18,7 +18,7 @@
                     <p>Gestión de pagos y cuotas</p>
                 </div>
                 <div class="header-right">
-                    <a href="/" class="btn btn-secondary">
+                    <a href="{{ vurl('/') }}" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Volver
                     </a>
                 </div>
@@ -84,7 +84,7 @@
         <section class="pago-section">
             <div class="pago-container">
                 <h2><i class="fas fa-plus-circle"></i> Registrar Nuevo Pago</h2>
-                <form action="/pago/{{ venta.id }}" method="POST" class="pago-form">
+                <form action="{{ vurl('/pago/' ~ venta.id) }}" method="POST" class="pago-form">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="monto_pago">
@@ -116,7 +116,7 @@
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-save"></i> Registrar Pago
                         </button>
-                        <a href="/" class="btn btn-secondary">
+                        <a href="{{ vurl('/') }}" class="btn btn-secondary">
                             <i class="fas fa-times"></i> Cancelar
                         </a>
                     </div>

@@ -145,13 +145,13 @@
                 </div>
                 <div class="header-right">
                     <div class="header-actions">
-                        <a href="/" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-home"></i> Inicio
+                        <a href="{{ vurl('/') }}" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-arrow-left"></i> Volver
                         </a>
-                        <a href="/cierre-mensual" class="btn btn-secondary btn-sm">
+                        <a href="{{ vurl('/cierre-mensual') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-calendar-check"></i> Cierre Mensual
                         </a>
-                        <a href="/ventas-excluidas" class="btn btn-secondary btn-sm">
+                        <a href="{{ vurl('/ventas-excluidas') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-archive"></i> Ventas Excluidas
                         </a>
                         <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
@@ -169,7 +169,7 @@
         <section class="form-section">
             <div class="form-container">
                 <h2><i class="fas fa-calendar-alt"></i> Seleccionar Período</h2>
-                <form method="POST" class="venta-form">
+                <form action="{{ vurl('/estadisticas-periodo') }}" method="POST" class="venta-form">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="fecha_inicio">

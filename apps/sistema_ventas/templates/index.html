@@ -37,17 +37,17 @@
                             <span style="color: var(--text-primary); font-weight: 500;">{{ current_user.name }}</span>
                         </div>
                         {% endif %}
-                        <a href="/cierre-mensual" class="btn btn-secondary btn-sm">
+                        <a href="{{ vurl('/cierre-mensual') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-calendar-check"></i> Cierre Mensual
                         </a>
-                        <a href="/ventas-excluidas" class="btn btn-secondary btn-sm">
+                        <a href="{{ vurl('/ventas-excluidas') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-archive"></i> Ventas Excluidas
                         </a>
-                        <a href="/estadisticas-periodo" class="btn btn-secondary btn-sm">
+                        <a href="{{ vurl('/estadisticas-periodo') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-chart-bar"></i> Estadísticas por Período
                         </a>
                         {% if current_user.is_authenticated %}
-                        <a href="/logout" class="btn btn-secondary btn-sm" style="background: #dc3545; color: white;">
+                        <a href="{{ vurl('/logout') }}" class="btn btn-secondary btn-sm" style="background: #dc3545; color: white;">
                             <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
                         </a>
                         {% endif %}
@@ -114,7 +114,7 @@
         <section class="form-section">
             <div class="form-container">
                 <h2><i class="fas fa-plus-circle"></i> Registrar Nueva Venta</h2>
-                <form action="/agregar" method="POST" class="venta-form">
+                <form action="{{ vurl('/agregar') }}" method="POST" class="venta-form">
                     <div class="form-row">
                 <div class="form-group">
                             <label for="cliente">
@@ -181,7 +181,7 @@
                 <div class="ventas-header">
                     <h2><i class="fas fa-list"></i> Ventas Registradas</h2>
                     <div class="search-container">
-                        <form action="/buscar" method="GET" class="search-form">
+                        <form action="{{ vurl('/buscar') }}" method="GET" class="search-form">
                             <div class="search-input-group">
                                 <i class="fas fa-search search-icon"></i>
                                 <input type="text" 
@@ -198,7 +198,7 @@
                         {% if busqueda %}
                         <div class="search-results">
                             <span class="results-count">{{ ventas|length }} resultado{% if ventas|length != 1 %}s{% endif %}</span>
-                            <a href="/" class="clear-search" title="Limpiar búsqueda">
+                            <a href="{{ vurl('/') }}" class="clear-search" title="Limpiar búsqueda">
                                 <i class="fas fa-times"></i>
                             </a>
                         </div>
@@ -234,7 +234,7 @@
                                 <td>
                                     <span class="pagos-count">{{ venta.total_pagos }}</span>
                                     {% if venta.total_pagos > 0 %}
-                                    <a href="/historial/{{ venta.id }}" class="btn-history" title="Ver historial">
+                                    <a href="{{ vurl('/historial/' ~ venta.id) }}" class="btn-history" title="Ver historial">
                                         <i class="fas fa-history"></i>
                                     </a>
                                     {% endif %}
@@ -250,11 +250,11 @@
                                 <td>
                                     <div class="action-buttons">
                                         {% if venta.saldo_pendiente > 0 %}
-                                        <a href="/pago/{{ venta.id }}" class="btn-pay" title="Registrar pago">
+                                        <a href="{{ vurl('/pago/' ~ venta.id) }}" class="btn-pay" title="Registrar pago">
                                             <i class="fas fa-credit-card"></i>
                                         </a>
                                         {% endif %}
-                                        <a href="/eliminar/{{ venta.id }}" 
+                                        <a href="{{ vurl('/eliminar/' ~ venta.id) }}" 
                                            class="btn-delete" 
                                            onclick="return confirm('¿Estás seguro de eliminar esta venta?')"
                                            title="Eliminar venta">
