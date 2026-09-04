@@ -1,2 +1,14 @@
+[project]
+name = "carlos-zerpa-dev"
+version = "0.1.0"
+description = "Portfolio Flask - Carlos Zerpa"
+requires-python = ">=3.12"
+dependencies = [
+  "Flask==3.0.3",
+  "requests==2.32.3",
+  "python-dotenv==1.0.1",
+  "gunicorn==21.2.0",
+]
+
 [tool.vercel]
 entrypoint = "wsgi:app"
