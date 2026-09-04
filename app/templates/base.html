@@ -12,11 +12,11 @@
 <body>
   <div class="noise-bg"></div>
   <header class="site-header">
-    <a class="brand" href="/">CarlosZerpa | Desarrollador</a>
+    <a class="brand" href="{{ url_for('main.home') }}">CarlosZerpa | Desarrollador</a>
     <nav class="nav">
-      <a href="/proyectos">Proyectos</a>
-      <a href="/servicios">Servicios</a>
-      <a href="/contacto">Contacto</a>
+      <a href="{{ url_for('main.projects') }}">Proyectos</a>
+      <a href="{{ url_for('main.services') }}">Servicios</a>
+      <a href="{{ url_for('main.contact') }}">Contacto</a>
     </nav>
   </header>
 
