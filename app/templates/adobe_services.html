@@ -4,10 +4,14 @@
   <img class="adobe-brand-logo" src="{{ url_for('static', filename='img/adobe-logo.png') }}" alt="Adobe">
   <h2>Servicios Adobe</h2>
   <p>Ofrezco automatizaciones, configuraciones y training de innovación sobre Adobe, con experiencia técnica en el rubro: PDF Services, Firefly Services y flujos de trabajo documentales y creativos. El enfoque es práctico, de implementación y de adopción en equipos reales.</p>
-  <p style="margin-top: 24px;">
-    <a class="btn-primary" href="{{ url_for('main.contact') }}">Hablar de Adobe</a>
-  </p>
-  <p style="margin-top: 24px;">
+  <p>Contamos con experiencia en servicios Adobe de preventa y postventa: entendemos el alcance, acompañamos la implementación y damos continuidad a usuarios y administradores.</p>
+  <p style="color: var(--muted); margin: 28px 0 12px;">Elige el tipo de servicio. Te abrimos WhatsApp con un mensaje listo para enviar.</p>
+  <div class="cta" style="justify-content: flex-start;">
+    {% for item in adobe_buttons %}
+    <a class="btn-secondary" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.label }}</a>
+    {% endfor %}
+  </div>
+  <p style="margin-top: 28px;">
     <a class="card-link" href="{{ url_for('main.projects') }}">← Volver a proyectos</a>
   </p>
 </section>

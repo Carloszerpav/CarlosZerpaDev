@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, send_from_directory
 import os
 
-from .catalog import project_cards
+from .catalog import adobe_service_buttons, project_cards
 
 MALVA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "apps", "malva")
 
@@ -89,6 +89,7 @@ def adobe_services():
     return render_template(
         "adobe_services.html",
         title="Servicios Adobe | Carlos Zerpa",
+        adobe_buttons=adobe_service_buttons(),
     )
 
 
