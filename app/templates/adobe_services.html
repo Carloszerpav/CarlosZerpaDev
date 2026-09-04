@@ -5,10 +5,35 @@
   <h2>Servicios Adobe</h2>
   <p>Ofrezco automatizaciones, configuraciones y training de innovación sobre Adobe, con experiencia técnica en el rubro: PDF Services, Firefly Services y flujos de trabajo documentales y creativos. El enfoque es práctico, de implementación y de adopción en equipos reales.</p>
   <p>Contamos con experiencia en servicios Adobe de preventa y postventa: entendemos el alcance, acompañamos la implementación y damos continuidad a usuarios y administradores.</p>
-  <p style="color: var(--muted); margin: 28px 0 12px;">Elige el tipo de servicio. Te abrimos WhatsApp con un mensaje listo para enviar.</p>
-  <div class="cta" style="justify-content: flex-start;">
+  <p class="adobe-wa-lead">Elige el tipo de servicio. Te abrimos WhatsApp con un mensaje listo para enviar.</p>
+  <div class="adobe-wa-grid">
     {% for item in adobe_buttons %}
-    <a class="btn-secondary" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.label }}</a>
+    <a class="adobe-wa-card" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+      <span class="adobe-wa-card-inner">
+        <span class="adobe-wa-icon" aria-hidden="true">
+          {% if item.icon == 'link' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l1.41-1.41a5 5 0 0 0-7.07-7.07L10 5.93"/><path d="M14 11a5 5 0 0 0-7.07 0L5.52 12.41a5 5 0 0 0 7.07 7.07L14 18.07"/></svg>
+          {% elif item.icon == 'webinar' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A4.5 4.5 0 0 1 8.5 15H20"/><path d="M4 4v15.5"/><path d="M8.5 4H20v11H8.5A4.5 4.5 0 0 0 4 19.5"/></svg>
+          {% elif item.icon == 'users' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          {% elif item.icon == 'bolt' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+          {% elif item.icon == 'pdf' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>
+          {% elif item.icon == 'spark' %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6.2 6.2l2.8 2.8M15 15l2.8 2.8M17.8 6.2 15 9M9 15l-2.8 2.8"/><circle cx="12" cy="12" r="3.2"/></svg>
+          {% else %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-4 7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 3 8 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          {% endif %}
+        </span>
+        <span class="adobe-wa-copy">
+          <strong>{{ item.label }}</strong>
+          <small>{{ item.hint }}</small>
+        </span>
+        <span class="adobe-wa-go" aria-hidden="true">→</span>
+      </span>
+    </a>
     {% endfor %}
   </div>
   <p style="margin-top: 28px;">
