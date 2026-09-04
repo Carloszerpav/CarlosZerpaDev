@@ -1,79 +1,9 @@
-from flask import Blueprint, abort, render_template, request
+from flask import Blueprint, render_template, request, send_from_directory
 import os
 
+MALVA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "apps", "malva")
+
 bp = Blueprint("main", __name__)
-
-PROJECTS = [
-    {
-        "slug": "sistema-ventas",
-        "title": "Sistema de Ventas",
-        "stack": ["Python", "Flask", "PostgreSQL"],
-        "desc": "Sistema integral de gestión de ventas con autenticación segura mediante Google OAuth. Plataforma eficiente para administrar transacciones, inventario y reportes en tiempo real.",
-        "category": "Web App",
-        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=400&fit=crop",
-        "github": "https://github.com/Carloszerpav/ventas-sistema",
-        "highlights": [
-            "Autenticación con Google OAuth",
-            "Gestión de transacciones, inventario y reportes",
-            "Caso documentado en este portfolio, con código en GitHub",
-        ],
-    },
-    {
-        "slug": "app-trader",
-        "title": "App Trader",
-        "stack": ["Frontend", "JavaScript", "Trading", "Tiempo real"],
-        "desc": "Aplicación web frontend para traders con herramientas avanzadas de análisis de mercado y visualización de datos en tiempo real. Proyecto desarrollado con tecnologías modernas del lado del cliente, enfocado en una interfaz intuitiva y responsive para gestión de portafolios y seguimiento de activos.",
-        "category": "Frontend App",
-        "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=400&fit=crop",
-        "github": "https://github.com/Carloszerpav/app-trader",
-        "highlights": [
-            "Visualización de mercado en tiempo real",
-            "Interfaz responsive para seguimiento de activos",
-            "Caso documentado en este portfolio, con código en GitHub",
-        ],
-    },
-    {
-        "slug": "malva-shop",
-        "title": "Malva Shop",
-        "stack": ["Catálogo", "Web Design", "WhatsApp"],
-        "desc": "Catálogo digital interactivo especializado en accesorios y maquillaje original. Plataforma diseñada para exhibir productos de manera elegante y profesional, con integración directa de contacto mediante WhatsApp e Instagram para facilitar la comunicación entre clientes y vendedora.",
-        "category": "Catalog Platform",
-        "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=400&fit=crop",
-        "github": "https://github.com/Carloszerpav/Malva",
-        "highlights": [
-            "Catálogo visual de accesorios y maquillaje",
-            "Contacto directo por WhatsApp e Instagram",
-            "Caso documentado en este portfolio, con código en GitHub",
-        ],
-    },
-    {
-        "slug": "kaspersky-endpoint-security",
-        "title": "Kaspersky Endpoint Security",
-        "stack": ["Ciberseguridad", "Enterprise", "Security Center"],
-        "desc": "Despliegue y configuración de soluciones de seguridad Kaspersky para protección integral de sistemas empresariales. Implementación de Kaspersky Endpoint Security y gestión centralizada mediante Kaspersky Security Center.",
-        "category": "Security & Infrastructure",
-        "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop",
-        "github": None,
-        "highlights": [
-            "Despliegue de Kaspersky Endpoint Security",
-            "Gestión centralizada con Kaspersky Security Center",
-            "Caso de implementación en entorno empresarial",
-        ],
-    },
-]
-
-
-def _project_by_slug(slug: str) -> dict | None:
-    return next((item for item in PROJECTS if item["slug"] == slug), None)
-
-
-def _neighbors(slug: str) -> tuple[dict | None, dict | None]:
-    index = next((i for i, item in enumerate(PROJECTS) if item["slug"] == slug), -1)
-    if index < 0:
-        return None, None
-    previous_item = PROJECTS[index - 1] if index > 0 else None
-    next_item = PROJECTS[index + 1] if index < len(PROJECTS) - 1 else None
-    return previous_item, next_item
 
 
 def send_whatsapp_notification(payload: dict) -> tuple[bool, str]:
@@ -138,21 +68,71 @@ def home():
 
 @bp.get("/proyectos")
 def projects():
-    return render_template("projects.html", projects=PROJECTS)
+    projects_list = [
+        {
+            "title": "Sistema de Ventas",
+            "stack": ["Python", "Flask", "PostgreSQL"],
+            "desc": "Sistema integral de gestión de ventas con autenticación segura mediante Google OAuth. Plataforma eficiente para administrar transacciones, inventario y reportes en tiempo real.",
+            "url": "/proyectos/sistema-ventas/",
+            "category": "Web App",
+            "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=400&fit=crop",
+        },
+        {
+            "title": "Malva Shop",
+            "stack": ["Catalog", "Web Design", "WhatsApp"],
+            "desc": "Catálogo digital interactivo especializado en accesorios y maquillaje original. Plataforma diseñada para exhibir productos de manera elegante y profesional, con integración directa de contacto mediante WhatsApp e Instagram para facilitar la comunicación entre clientes y vendedora.",
+            "url": "/proyectos/malva-shop/",
+            "category": "Catalog Platform",
+            "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=400&fit=crop",
+        },
+        {
+            "title": "App Trader",
+            "stack": ["Frontend", "JavaScript", "Trading", "Real-time"],
+            "desc": "Aplicación web frontend para traders con herramientas avanzadas de análisis de mercado y visualización de datos en tiempo real. Proyecto desarrollado con tecnologías modernas del lado del cliente, enfocado en una interfaz intuitiva y responsive para gestión de portafolios y seguimiento de activos.",
+            "url": "/proyectos/app-trader",
+            "category": "Frontend App",
+            "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=400&fit=crop",
+        },
+        {
+            "title": "Kaspersky Endpoint Security",
+            "stack": ["Cybersecurity", "Enterprise", "Deployment", "Security Center"],
+            "desc": "Despliegue y configuración de soluciones de seguridad Kaspersky para protección integral de sistemas empresariales. Implementación de Kaspersky Endpoint Security y gestión centralizada mediante Kaspersky Security Center.",
+            "url": "/proyectos/kaspersky-endpoint-security",
+            "category": "Security & Infrastructure",
+            "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop",
+        },
+    ]
+    return render_template("projects.html", projects=projects_list)
 
 
-@bp.get("/proyectos/<slug>")
-def project_detail(slug: str):
-    project = _project_by_slug(slug)
-    if not project:
-        abort(404)
-    previous_item, next_item = _neighbors(slug)
+@bp.get("/proyectos/malva-shop")
+@bp.get("/proyectos/malva-shop/")
+def malva_shop_index():
+    return send_from_directory(MALVA_DIR, "index.html")
+
+
+@bp.get("/proyectos/malva-shop/<path:filename>")
+def malva_shop_file(filename: str):
+    return send_from_directory(MALVA_DIR, filename)
+
+
+@bp.get("/proyectos/app-trader")
+def app_trader():
     return render_template(
-        "project_detail.html",
-        project=project,
-        previous_project=previous_item,
-        next_project=next_item,
-        title=f"{project['title']} | Carlos Zerpa",
+        "project_info.html",
+        title="App Trader | Carlos Zerpa",
+        heading="App Trader",
+        desc="Aplicación frontend para traders con análisis de mercado y visualización en tiempo real. Pensada para uso en dispositivo, con interfaz intuitiva y seguimiento de activos.",
+    )
+
+
+@bp.get("/proyectos/kaspersky-endpoint-security")
+def kaspersky_endpoint():
+    return render_template(
+        "project_info.html",
+        title="Kaspersky Endpoint Security | Carlos Zerpa",
+        heading="Kaspersky Endpoint Security",
+        desc="Despliegue y configuración de Kaspersky Endpoint Security y gestión centralizada con Kaspersky Security Center en entorno empresarial.",
     )
 
 

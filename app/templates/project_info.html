@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+  <h2>{{ heading }}</h2>
+  <p>{{ desc }}</p>
+  <p style="margin-top: 24px;">
+    <a class="card-link" href="{{ url_for('main.projects') }}">← Volver a proyectos</a>
+  </p>
+</section>
+{% endblock %}

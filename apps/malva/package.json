@@ -1,0 +1,14 @@
+{
+  "name": "malva-shop",
+  "version": "1.0.0",
+  "description": "Sitio web minimalista para la tienda online Malva Shop.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Malva Shop",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

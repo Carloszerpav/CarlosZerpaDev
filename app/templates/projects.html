@@ -2,39 +2,43 @@
 {% block content %}
 <section>
   <h2>Proyectos</h2>
-  <p style="color: var(--muted); margin-bottom: 32px;">Cada caso se abre aquí mismo, en orden: Sistema de Ventas, App Trader, Malva Shop y Kaspersky Endpoint Security. El código en GitHub queda como referencia, no como destino del recorrido.</p>
+  <p style="color: var(--muted); margin-bottom: 32px;">Proyectos reales desarrollados y desplegados en producción. Cada uno representa soluciones tecnológicas robustas y funcionales.</p>
   
   <div class="cards projects-grid">
     {% for p in projects %}
     <article class="card project-card">
-      <a class="project-card-link" href="{{ url_for('main.project_detail', slug=p.slug) }}">
-        <div class="project-image">
-          {% if p.get('image') %}
-          <img src="{{ p.image }}" alt="{{ p.title }}" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwYmYxNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkludGVyIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOWZiMGMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Tk8gSU1BR0U8L3RleHQ+PC9zdmc+';">
-          {% else %}
-          <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(90,200,250,0.1), rgba(155,90,249,0.1)); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 48px;">🔒</div>
-          {% endif %}
-        </div>
-        <div class="card-body">
-          <div class="card-header">
-            <div>
-              <h3>{{ p.title }}</h3>
-              {% if p.get('category') %}
-              <span class="project-category">{{ p.category }}</span>
-              {% endif %}
-            </div>
-          </div>
-          <p class="project-desc">{{ p.desc }}</p>
-          <div class="chips">
-            {% for s in p.stack %}
-            <span class="chip">{{ s }}</span>
-            {% endfor %}
-          </div>
-          <div style="margin-top: auto; padding-top: 16px;">
-            <span class="card-link">Ver caso →</span>
+      <div class="project-image">
+        {% if p.get('image') %}
+        <img src="{{ p.image }}" alt="{{ p.title }}" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwYmYxNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMTcyMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkludGVyIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOWZiMGMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Tk8gSU1BR0U8L3RleHQ+PC9zdmc+';">
+        {% else %}
+        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(90,200,250,0.1), rgba(155,90,249,0.1)); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 48px;">🔒</div>
+        {% endif %}
+      </div>
+      <div class="card-body">
+        <div class="card-header">
+          <div>
+            <h3>{{ p.title }}</h3>
+            {% if p.get('category') %}
+            <span class="project-category">{{ p.category }}</span>
+            {% endif %}
           </div>
         </div>
-      </a>
+        <p class="project-desc">{{ p.desc }}</p>
+        <div class="chips">
+          {% for s in p.stack %}
+          <span class="chip">{{ s }}</span>
+          {% endfor %}
+        </div>
+        <div style="margin-top: auto; padding-top: 16px;">
+          <a class="card-link" href="{{ p.url }}" {% if p.get('is_external') %}target="_blank" rel="noopener noreferrer"{% endif %}>
+            {% if p.get('is_external') %}
+            Ver proyecto ↗
+            {% else %}
+            Ver proyecto →
+            {% endif %}
+          </a>
+        </div>
+      </div>
     </article>
     {% endfor %}
   </div>

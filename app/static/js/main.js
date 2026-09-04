@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav a');
   navLinks.forEach(link => {
     const linkPath = new URL(link.href).pathname;
-    const isExact = linkPath === currentPath;
-    const isNested = linkPath !== '/' && currentPath.startsWith(linkPath + '/');
-    if (isExact || isNested) {
+    if (linkPath === currentPath || (currentPath === '/' && linkPath === '/')) {
       link.classList.add('active');
     }
   });

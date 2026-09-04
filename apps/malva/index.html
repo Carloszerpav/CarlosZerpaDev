@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malva Shop - Accesorios y Maquillaje Original</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <img src="newlogo.png" alt="Malva Shop" class="logo">
+            <nav class="nav">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#productos" class="nav-link">Productos</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+                <a href="/proyectos" class="nav-link">Portfolio</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Menú">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8A7B5" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-banner">
+            <h1 class="hero-title">Malva Shop</h1>
+            <div class="hero-decoration">
+                <span class="decoration-line"></span>
+                <span class="decoration-icon">♡</span>
+                <span class="decoration-line"></span>
+            </div>
+            <p class="hero-subtitle">Accesorios y Maquillaje Original</p>
+            <p class="hero-tagline">Cruelty Free • Productos Originales</p>
+            <p class="hero-description">
+                Somos una tienda online en Barquisimeto, Venezuela. Curamos maquillaje y accesorios 100% originales
+                para que emprendas con confianza. Vendemos al mayor y al detal, siempre con un toque Malva.
+            </p>
+        </div>
+        <a href="#productos" class="hero-button">Ver Productos ↓</a>
+    </section>
+
+    <!-- Productos Section -->
+    <section id="productos" class="products">
+        <h2 class="section-title">Nuestros Productos</h2>
+        
+        <!-- Categoría Maquillaje -->
+        <div class="product-category">
+            <h3 class="category-title">Maquillaje</h3>
+            <div class="products-grid" id="products-maquillaje">
+                <!-- Los productos se cargarán dinámicamente desde data.js -->
+            </div>
+        </div>
+        
+        <!-- Categoría Accesorios -->
+        <div class="product-category">
+            <h3 class="category-title">Accesorios</h3>
+            <div class="products-grid" id="products-accesorios">
+                <!-- Los productos se cargarán dinámicamente desde data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Mystery Box Section -->
+    <section class="mystery-box">
+        <div class="mystery-box-content" id="mystery-box-trigger">
+            <div class="mystery-box-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#E8A7B5" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                    <path d="M9 3v18"></path>
+                </svg>
+            </div>
+            <h2 class="mystery-box-title">Adquiere tu Caja Misteriosa</h2>
+            <p class="mystery-box-description">
+                ¿Quieres generar ganancias vendiendo maquillaje? Te vendemos una caja misteriosa para que ganes el doble de lo invertido. 
+                Productos originales seleccionados especialmente para ti.
+            </p>
+            <p class="mystery-box-cta">Haz clic para ver los videos ↓</p>
+        </div>
+    </section>
+
+    <!-- Modal para Videos -->
+    <div class="modal" id="mystery-box-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <h2 class="modal-title">Videos de la Caja Misteriosa</h2>
+            <div class="videos-container" id="videos-container">
+                <!-- Los videos se cargarán dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer / Contacto -->
+    <footer id="contacto" class="footer">
+        <h2 class="section-title">Contáctanos ♡</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8A7B5" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <a href="https://instagram.com/malva.shopve" target="_blank" class="contact-link">@malva.shopve</a>
+            </div>
+            <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8A7B5" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <a href="https://wa.me/584120572857" id="whatsapp-link" target="_blank" class="contact-link">WhatsApp disponible</a>
+            </div>
+        </div>
+        <p class="footer-text">Tienda Online | Productos Originales | Cruelty Free</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
