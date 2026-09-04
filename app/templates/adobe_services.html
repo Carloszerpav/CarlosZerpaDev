@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="adobe-page">
+  <div class="adobe-copy">
+    <img class="adobe-brand-logo" src="{{ url_for('static', filename='img/adobe-logo.png') }}" alt="Adobe">
+    <h2>Servicios Adobe</h2>
+    <p>Ofrezco automatizaciones, configuraciones y training de innovación sobre Adobe, con experiencia técnica en el rubro: PDF Services, Firefly Services y flujos de trabajo documentales y creativos. El enfoque es práctico, de implementación y de adopción en equipos reales.</p>
+    <a class="btn-primary" href="{{ url_for('main.contact') }}">Hablar de Adobe</a>
+    <a class="card-link adobe-back" href="{{ url_for('main.projects') }}">← Volver a proyectos</a>
+  </div>
+
+  <div class="adobe-stage" aria-hidden="true">
+    <div class="adobe-glow adobe-glow-red"></div>
+    <div class="adobe-glow adobe-glow-purple"></div>
+    <div class="adobe-wave"></div>
+    <div class="adobe-dots"></div>
+    <svg class="adobe-gear" viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="10" stroke="rgba(230,240,255,0.18)"/>
+      <path d="M32 8v6M32 50v6M8 32h6M50 32h6M14 14l4 4M46 46l4 4M14 50l4-4M46 18l4-4" stroke="rgba(230,240,255,0.18)" stroke-linecap="round"/>
+    </svg>
+
+    <article class="adobe-card adobe-card-firefly">
+      <header>
+        <span class="adobe-fi">Fi</span>
+        <strong>Adobe Firefly</strong>
+      </header>
+      <div class="adobe-search">Generar imagen</div>
+      <div class="adobe-thumbs">
+        <span></span>
+        <span></span>
+      </div>
+    </article>
+
+    <div class="adobe-acrobat">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#EB1000"/>
+        <path d="M18 44c8-16 14-28 28-32-6 10-8 20-6 32H18z" fill="#fff"/>
+        <path d="M22 38h22" stroke="#EB1000" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <article class="adobe-card adobe-card-flow">
+      <strong>Automatización</strong>
+      <div class="adobe-flow">
+        <div>
+          <span class="adobe-ico">⌂</span>
+          <small>Disparador</small>
+        </div>
+        <i></i>
+        <div>
+          <span class="adobe-ico">☰</span>
+          <small>Procesar</small>
+        </div>
+        <i></i>
+        <div>
+          <span class="adobe-ico">PDF</span>
+          <small>PDF Services</small>
+        </div>
+        <i></i>
+        <div>
+          <span class="adobe-ico">🔔</span>
+          <small>Notificación</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="adobe-card adobe-card-api">
+      <strong>PDF Services API</strong>
+      <ul>
+        <li>Extraer texto</li>
+        <li>Convertir a PDF</li>
+        <li>Proteger documentos</li>
+        <li>Firma electrónica</li>
+      </ul>
+    </article>
+  </div>
+</section>
+{% endblock %}
