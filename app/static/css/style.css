@@ -9,6 +9,8 @@
   --border: #1b2636;
   --error: #ff6b6b;
   --success: #19d27e;
+  --header-height: 64px;
+  --header-pad-x: 20px;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
@@ -25,7 +27,7 @@ body {
 
 .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 96px 20px 72px; }
 
-.site-header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; min-height: 64px; padding: 16px 20px; background: rgba(11,15,20,0.6); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.site-header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; height: var(--header-height); min-height: var(--header-height); padding: 0 var(--header-pad-x); background: rgba(11,15,20,0.6); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .brand { color: var(--text); font-weight: 800; text-decoration: none; letter-spacing: 0.5px; }
 .nav { display: flex; gap: 16px; }
 .nav a { color: var(--muted); text-decoration: none; padding: 8px 12px; border-radius: 10px; border: 1px solid transparent; transition: color .12s ease, border-color .12s ease, background .12s ease; }
@@ -110,15 +112,19 @@ section > p { color: var(--muted); }
 .adobe-banner {
   position: relative;
   width: 100%;
+  height: var(--header-height);
   margin: 0;
+  padding: 0 var(--header-pad-x);
+  display: flex;
+  align-items: center;
   overflow: hidden;
-  line-height: 0;
   background: #fff;
+  box-sizing: border-box;
 }
 .adobe-banner img {
   display: block;
   width: 100%;
-  height: clamp(64px, calc(100vw * 163 / 1920), 163px);
+  height: 36px;
   object-fit: cover;
   object-position: center;
 }
@@ -128,9 +134,9 @@ section > p { color: var(--muted); }
   left: 0;
   right: 0;
   bottom: 0;
-  height: 40%;
+  height: 45%;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.4) 50%, var(--bg) 100%);
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.35) 55%, var(--bg) 100%);
 }
 .adobe-wa-lead { color: var(--muted); margin: 28px 0 12px; }
 .adobe-svc-list {
