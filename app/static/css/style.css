@@ -104,19 +104,22 @@ section > p { color: var(--muted); }
 .services { list-style: square; padding-left: 20px; color: var(--muted); }
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
-.page-adobe .container { padding-top: 20px; }
 .adobe-banner {
   position: relative;
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
   line-height: 0;
-  background: #fff;
+  margin: 0 0 20px;
+  background: #f4f4f4;
 }
 .adobe-banner img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  object-fit: cover;
+  max-width: 100%;
+  aspect-ratio: 1920 / 163;
+  object-fit: contain;
   object-position: center;
 }
 .adobe-banner::after {
@@ -125,9 +128,9 @@ section > p { color: var(--muted); }
   left: 0;
   right: 0;
   bottom: 0;
-  height: 42%;
+  height: 48%;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.35) 45%, var(--bg) 100%);
+  background: linear-gradient(to bottom, rgba(11, 15, 20, 0) 0%, rgba(11, 15, 20, 0.45) 55%, var(--bg) 100%);
 }
 .adobe-wa-lead { color: var(--muted); margin: 28px 0 12px; }
 .adobe-svc-list {
@@ -189,6 +192,7 @@ section > p { color: var(--muted); }
 }
 
 @media (max-width: 900px) {
+  .adobe-banner { margin-bottom: 16px; }
   .hero { padding: 48px 0 32px; }
   .grid-features { grid-template-columns: 1fr; }
   .cards { grid-template-columns: 1fr; }
