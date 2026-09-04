@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
   <div class="noise-bg"></div>
   <header class="site-header">
     <a class="brand" href="{{ url_for('main.home') }}">Carlos & Santiago | Freelancers</a>
@@ -19,6 +19,8 @@
       <a href="{{ url_for('main.contact') }}">Contacto</a>
     </nav>
   </header>
+
+  {% block page_banner %}{% endblock %}
 
   <main class="container">
     {% block content %}{% endblock %}
