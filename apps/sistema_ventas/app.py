@@ -5,9 +5,17 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
 import os
-import secrets
 
-app = Flask(__name__)
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app = Flask(
+    __name__,
+    root_path=_BASE_DIR,
+    template_folder=os.path.join(_BASE_DIR, "templates"),
+    static_folder=os.path.join(_BASE_DIR, "static"),
+    instance_path=os.environ.get("VENTAS_INSTANCE") or (
+        "/tmp/ventas_instance" if os.environ.get("VERCEL") else os.path.join(_BASE_DIR, "instance")
+    ),
+)
 # Clave secreta: usar variable de entorno en producción, generar aleatoria en desarrollo
 app.secret_key = os.environ.get('SECRET_KEY', 'carloszerpa-ventas-demo')
 

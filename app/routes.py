@@ -101,6 +101,15 @@ def projects():
             "category": "Security & Infrastructure",
             "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop",
         },
+        {
+            "title": "DeporteMania",
+            "stack": ["Web", "E-commerce", "Deporte"],
+            "desc": "Sitio web en producción de DeporteMania: catálogo y venta de artículos deportivos, con experiencia de compra online para el público en Chile.",
+            "url": "https://deportemania.cl/",
+            "category": "Web App",
+            "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&h=400&fit=crop",
+            "is_external": True,
+        },
     ]
     return render_template("projects.html", projects=projects_list)
 
