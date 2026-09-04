@@ -11,7 +11,8 @@ def project_cards() -> list[dict]:
             "desc": "Automatizaciones, configuraciones y training de innovación sobre el ecosistema Adobe. Experiencia técnica en PDF Services y Firefly Services para flujos documentales y creativos en entornos reales.",
             "url": "/proyectos/servicios-adobe",
             "category": "Adobe Services",
-            "image": "https://images.unsplash.com/photo-1618005198919-d3d224b6b389?w=800&h=400&fit=crop",
+            "image": url_for("static", filename="img/adobe-logo.png"),
+            "image_contain": True,
         },
         {
             "title": "DeporteMania",
